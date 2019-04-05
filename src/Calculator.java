@@ -1,4 +1,6 @@
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -11,6 +13,7 @@ public class Calculator {
 	
 	public Calculator() {
 		
+// Define JFrame, JPanel, JButton, JLabel
 		JLabel mainLabel = new JLabel("", SwingConstants.RIGHT);
 		
 		JPanel panel1 = new JPanel(new GridLayout(1,4));
@@ -21,12 +24,12 @@ public class Calculator {
 		
 		JButton buttonCE = new JButton("CE");
 		JButton buttonC = new JButton("C");
-		JButton buttonBack = new JButton("<-");
-		JButton buttonDiv = new JButton("/");
+		JButton buttonBack = new JButton("←");
+		JButton buttonDiv = new JButton("÷");
 		JButton button7 = new JButton("7");
 		JButton button8 = new JButton("8");
 		JButton button9 = new JButton("9");
-		JButton buttonMult = new JButton("*");
+		JButton buttonMult = new JButton("×");
 		JButton button4 = new JButton("4");
 		JButton button5 = new JButton("5");
 		JButton button6 = new JButton("6");
@@ -35,7 +38,7 @@ public class Calculator {
 		JButton button2 = new JButton("2");
 		JButton button3 = new JButton("3");
 		JButton buttonAdd = new JButton("+");
-		JButton buttonNegate = new JButton("+/-");
+		JButton buttonNegate = new JButton("±");
 		JButton button0 = new JButton("0");
 		JButton buttonPoint = new JButton(".");
 		JButton buttonEquals = new JButton("=");
@@ -43,7 +46,8 @@ public class Calculator {
 		JFrame mainFrame = new JFrame();
 		mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		mainFrame.setLayout(new GridLayout(6,1));
-		
+	
+// Add JPanel, JButton, JLabel to JFrame
 		mainFrame.add(mainLabel);
 		mainFrame.add(panel1);
 		mainFrame.add(panel2);
@@ -78,6 +82,122 @@ public class Calculator {
 		
 		mainFrame.pack();
 		mainFrame.setVisible(true);
+
+// Button ActionListeners
+		button0.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText(mainLabel.getText() + "0");
+			}
+		});
+		button1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText(mainLabel.getText() + "1");
+			}
+		});
+		button2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText(mainLabel.getText() + "2");
+			}
+		});
+		button3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText(mainLabel.getText() + "3");
+			}
+		});
+		button4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText(mainLabel.getText() + "4");
+			}
+		});
+		button5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText(mainLabel.getText() + "5");
+			}
+		});
+		button6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText(mainLabel.getText() + "6");
+			}
+		});
+		button7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText(mainLabel.getText() + "7");
+			}
+		});
+		button8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText(mainLabel.getText() + "8");
+			}
+		});
+		button9.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText(mainLabel.getText() + "9");
+			}
+		});
+		buttonPoint.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText(mainLabel.getText() + ".");
+			}
+		});
+		buttonAdd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText(mainLabel.getText() + "+");
+			}
+		});
+		buttonSub.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText(mainLabel.getText() + "-");
+			}
+		});
+		buttonMult.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText(mainLabel.getText() + "×");
+			}
+		});
+		buttonDiv.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText(mainLabel.getText() + "÷");
+			}
+		});
+		buttonBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().length() - 1));
+			}
+		});
+		buttonC.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainLabel.setText("");
+			}
+		});
+		buttonCE.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if(mainLabel.getText().contains("+")) {
+					mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().indexOf("+") + 1));
+				}
+				else if(mainLabel.getText().contains("-")) {
+					mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().indexOf("-") + 1));
+				}
+				else if(mainLabel.getText().contains("×")) {
+					mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().indexOf("×") + 1));
+				}
+				else if(mainLabel.getText().contains("÷")) {
+					mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().indexOf("÷") + 1));
+				}
+				else {
+					mainLabel.setText("");
+				}
+			}
+		});
+		buttonNegate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
+		buttonEquals.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+			}
+		});
 	}
 	
 	public static void main(String[] args) {
