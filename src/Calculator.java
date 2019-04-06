@@ -11,6 +11,11 @@ import javax.swing.WindowConstants;
 
 public class Calculator {
 	
+	int cnt = 0;
+	int neg = 0;
+	int cntB = 0;
+	int cntP = 0;
+	
 	public Calculator() {
 		
 // Define JFrame, JPanel, JButton, JLabel
@@ -33,7 +38,7 @@ public class Calculator {
 		JButton button4 = new JButton("4");
 		JButton button5 = new JButton("5");
 		JButton button6 = new JButton("6");
-		JButton buttonSub = new JButton("-");
+		JButton buttonSub = new JButton("–");
 		JButton button1 = new JButton("1");
 		JButton button2 = new JButton("2");
 		JButton button3 = new JButton("3");
@@ -136,46 +141,72 @@ public class Calculator {
 		});
 		buttonPoint.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mainLabel.setText(mainLabel.getText() + ".");
+				if(!(mainLabel.getText().equals("")) && cntP == 0) {
+					mainLabel.setText(mainLabel.getText() + ".");
+					cntP = 1;
+				}
 			}
 		});
 		buttonAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mainLabel.setText(mainLabel.getText() + "+");
+				if(cntB == 0 && !(mainLabel.getText().equals(""))) {
+					mainLabel.setText(mainLabel.getText() + "+");
+					cntB = 1;
+					cntP = 0;
+				}
 			}
 		});
 		buttonSub.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mainLabel.setText(mainLabel.getText() + "-");
+				if(cntB == 0 && !(mainLabel.getText().equals(""))) {
+					mainLabel.setText(mainLabel.getText() + "–");
+					cntB = 1;
+					cntP = 0;
+				}
 			}
 		});
 		buttonMult.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mainLabel.setText(mainLabel.getText() + "×");
+				if(cntB == 0 && !(mainLabel.getText().equals(""))) {
+					mainLabel.setText(mainLabel.getText() + "×");
+					cntB = 1;
+					cntP = 0;
+				}
 			}
 		});
 		buttonDiv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mainLabel.setText(mainLabel.getText() + "÷");
+				if(cntB == 0 && !(mainLabel.getText().equals(""))) {
+					mainLabel.setText(mainLabel.getText() + "÷");
+					cntB = 1;
+					cntP = 0;
+				}
 			}
 		});
 		buttonBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().length() - 1));
+				if(mainLabel.getText().length() != 0) {
+					mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().length() - 1));
+				}
 			}
 		});
 		buttonC.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mainLabel.setText("");
+				cnt = 0;
+				cntB = 0;
+				cntP = 0;
 			}
 		});
 		buttonCE.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				cnt = 0;
+				cntP = 0;
 				if(mainLabel.getText().contains("+")) {
 					mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().indexOf("+") + 1));
 				}
-				else if(mainLabel.getText().contains("-")) {
-					mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().indexOf("-") + 1));
+				else if(mainLabel.getText().contains("–")) {
+					mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().indexOf("–") + 1));
 				}
 				else if(mainLabel.getText().contains("×")) {
 					mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().indexOf("×") + 1));
@@ -190,7 +221,26 @@ public class Calculator {
 		});
 		buttonNegate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				if(mainLabel.getText().contains("+") && cnt == 0) {
+					mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().indexOf("+") + 1) + " -" + mainLabel.getText().substring(mainLabel.getText().indexOf("+") + 1, mainLabel.getText().length()));
+					cnt = 1;
+				}
+				else if(mainLabel.getText().contains("–") && cnt == 0) {
+					mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().indexOf("–") + 1) + " -" + mainLabel.getText().substring(mainLabel.getText().indexOf("–") + 1, mainLabel.getText().length()));
+					cnt = 1;
+				}
+				else if(mainLabel.getText().contains("×") && cnt == 0) {
+					mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().indexOf("×") + 1) + " -" + mainLabel.getText().substring(mainLabel.getText().indexOf("×") + 1, mainLabel.getText().length()));
+					cnt = 1;
+				}
+				else if(mainLabel.getText().contains("÷") && cnt == 0) {
+					mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().indexOf("÷") + 1) + " -" + mainLabel.getText().substring(mainLabel.getText().indexOf("÷") + 1, mainLabel.getText().length()));
+					cnt = 1;
+				}
+				else if(!(mainLabel.getText().contains("+")) && !(mainLabel.getText().contains("–")) && !(mainLabel.getText().contains("×")) && !(mainLabel.getText().contains("÷")) && !(mainLabel.getText().contains("-"))) {
+					mainLabel.setText("-" + mainLabel.getText());
+					neg = 1;
+				}
 			}
 		});
 		buttonEquals.addActionListener(new ActionListener() {
