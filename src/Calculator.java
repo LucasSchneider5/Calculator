@@ -233,7 +233,7 @@ public class Calculator {
 					mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().indexOf("×") + 1) + " -" + mainLabel.getText().substring(mainLabel.getText().indexOf("×") + 1, mainLabel.getText().length()));
 					cnt = 1;
 				}
-				else if(mainLabel.getText().contains("÷") && cnt == 0) {
+				else if(mainLabel.getText().contains("c") && cnt == 0) {
 					mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().indexOf("÷") + 1) + " -" + mainLabel.getText().substring(mainLabel.getText().indexOf("÷") + 1, mainLabel.getText().length()));
 					cnt = 1;
 				}
@@ -245,7 +245,57 @@ public class Calculator {
 		});
 		buttonEquals.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				if(mainLabel.getText().contains("+")) {
+					if(mainLabel.getText().substring(mainLabel.getText().indexOf("+") + 1, mainLabel.getText().length()).length() == 0) {
+						mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().length() - 1));
+						cnt = 0;
+						neg = 0;
+						cntB = 0;
+						cntP = 0;
+					}
+				}
+				if(mainLabel.getText().contains("–")) {
+					if(mainLabel.getText().substring(mainLabel.getText().indexOf("–") + 1, mainLabel.getText().length()).length() == 0) {
+						mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().length() - 1));
+						cnt = 0;
+						neg = 0;
+						cntB = 0;
+						cntP = 0;
+					}
+				}
+				if(mainLabel.getText().contains("×")) {
+					if(mainLabel.getText().substring(mainLabel.getText().indexOf("×") + 1, mainLabel.getText().length()).length() == 0) {
+						mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().length() - 1));
+						cnt = 0;
+						neg = 0;
+						cntB = 0;
+						cntP = 0;
+					}
+				}
+				if(mainLabel.getText().contains("÷")) {
+					if(mainLabel.getText().substring(mainLabel.getText().indexOf("÷") + 1, mainLabel.getText().length()).length() == 0) {
+						mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().length() - 1));
+						cnt = 0;
+						neg = 0;
+						cntB = 0;
+						cntP = 0;
+					}
+				}
+					
+					// Wenn nach dem Zeichen keine Zahl ist, einfach wieder erste Zahl ausgeben
+				
+				
+					// Substring vor und nach dem Zeichen
+					// Schau ob KommaZahl, wenn nicht:
+					// 	Zahl von String zu int
+					// 		### String myString = "1234";
+					// 		### int foo = Integer.parseInt(myString);
+					// 	Wenn Zahl mit Komma: 
+					// 		### String strAmount="100.20";
+					// 		### float amount=Float.parseFloat(strAmount)
+					// Wenn Index 0 beider substrings jeweils ein Minus ist, Zahl negieren
+					// Rechnen
+					// Ergebnis ausgeben
 			}
 		});
 	}
