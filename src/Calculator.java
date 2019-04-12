@@ -1,7 +1,7 @@
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,7 +18,6 @@ public class Calculator {
 	
 	public Calculator() {
 		
-// Define JFrame, JPanel, JButton, JLabel
 		JLabel mainLabel = new JLabel("", SwingConstants.RIGHT);
 		
 		JPanel panel1 = new JPanel(new GridLayout(1,4));
@@ -50,9 +49,9 @@ public class Calculator {
 		
 		JFrame mainFrame = new JFrame();
 		mainFrame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		mainFrame.setPreferredSize(new Dimension(250, 300));
 		mainFrame.setLayout(new GridLayout(6,1));
 	
-// Add JPanel, JButton, JLabel to JFrame
 		mainFrame.add(mainLabel);
 		mainFrame.add(panel1);
 		mainFrame.add(panel2);
@@ -88,7 +87,6 @@ public class Calculator {
 		mainFrame.pack();
 		mainFrame.setVisible(true);
 
-// Button ActionListeners
 		button0.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				mainLabel.setText(mainLabel.getText() + "0");
@@ -248,54 +246,228 @@ public class Calculator {
 				if(mainLabel.getText().contains("+")) {
 					if(mainLabel.getText().substring(mainLabel.getText().indexOf("+") + 1, mainLabel.getText().length()).length() == 0) {
 						mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().length() - 1));
-						cnt = 0;
-						neg = 0;
-						cntB = 0;
-						cntP = 0;
 					}
+					else {
+						String first = mainLabel.getText().substring(0, mainLabel.getText().indexOf("+"));
+						String second = mainLabel.getText().substring(mainLabel.getText().indexOf("+") + 1, mainLabel.getText().length());
+						if(second.startsWith(" ")) {
+							second = second.substring(1, second.length());
+						}
+						float firstFloat = 0;
+						float secondFloat = 0;
+						int firstInt = 0;
+						int secondInt = 0;
+						int resultInt = 0;
+						float resultFloat = 0;
+						if(first.contains(".")) {
+							firstFloat = Float.parseFloat(first);
+						}
+						else {
+							firstInt = Integer.parseInt(first);
+						}
+						if(second.contains(".")) {
+							secondFloat = Float.parseFloat(second);
+
+						}
+						else {
+							secondInt = Integer.parseInt(second);
+						}
+						if(firstInt != 0 && secondInt != 0) {
+							resultInt = firstInt + secondInt;
+						}
+						if(firstFloat != 0 && secondFloat != 0) {
+							resultFloat = firstFloat + secondFloat;
+						}
+						if(firstInt != 0 && secondFloat != 0) {
+							resultFloat = firstInt + secondFloat;
+						}
+						if(firstFloat != 0 && secondInt != 0) {
+							resultFloat = firstFloat + secondInt;
+						}
+						if(resultFloat != 0) {
+							String result = String.valueOf(resultFloat);
+							mainLabel.setText(result);
+						}
+						if(resultInt != 0) {
+							String result = String.valueOf(resultInt);
+							mainLabel.setText(result);
+						}
+					}
+					cnt = 0;
+					neg = 0;
+					cntB = 0;
+					cntP = 0;
 				}
 				if(mainLabel.getText().contains("–")) {
 					if(mainLabel.getText().substring(mainLabel.getText().indexOf("–") + 1, mainLabel.getText().length()).length() == 0) {
 						mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().length() - 1));
-						cnt = 0;
-						neg = 0;
-						cntB = 0;
-						cntP = 0;
 					}
+					else {
+						String first = mainLabel.getText().substring(0, mainLabel.getText().indexOf("–"));
+						String second = mainLabel.getText().substring(mainLabel.getText().indexOf("–") + 1, mainLabel.getText().length());
+						if(second.startsWith(" ")) {
+							second = second.substring(1, second.length());
+						}
+						float firstFloat = 0;
+						float secondFloat = 0;
+						int firstInt = 0;
+						int secondInt = 0;
+						int resultInt = 0;
+						float resultFloat = 0;
+						if(first.contains(".")) {
+							firstFloat = Float.parseFloat(first);
+						}
+						else {
+							firstInt = Integer.parseInt(first);
+						}
+						if(second.contains(".")) {
+							secondFloat = Float.parseFloat(second);
+
+						}
+						else {
+							secondInt = Integer.parseInt(second);
+						}
+						if(firstInt != 0 && secondInt != 0) {
+							resultInt = firstInt - secondInt;
+						}
+						if(firstFloat != 0 && secondFloat != 0) {
+							resultFloat = firstFloat - secondFloat;
+						}
+						if(firstInt != 0 && secondFloat != 0) {
+							resultFloat = firstInt - secondFloat;
+						}
+						if(firstFloat != 0 && secondInt != 0) {
+							resultFloat = firstFloat - secondInt;
+						}
+						if(resultFloat != 0) {
+							String result = String.valueOf(resultFloat);
+							mainLabel.setText(result);
+						}
+						if(resultInt != 0) {
+							String result = String.valueOf(resultInt);
+							mainLabel.setText(result);
+						}
+					}
+					cnt = 0;
+					neg = 0;
+					cntB = 0;
+					cntP = 0;
 				}
 				if(mainLabel.getText().contains("×")) {
 					if(mainLabel.getText().substring(mainLabel.getText().indexOf("×") + 1, mainLabel.getText().length()).length() == 0) {
 						mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().length() - 1));
-						cnt = 0;
-						neg = 0;
-						cntB = 0;
-						cntP = 0;
 					}
+					else {
+						String first = mainLabel.getText().substring(0, mainLabel.getText().indexOf("×"));
+						String second = mainLabel.getText().substring(mainLabel.getText().indexOf("×") + 1, mainLabel.getText().length());
+						if(second.startsWith(" ")) {
+							second = second.substring(1, second.length());
+						}
+						float firstFloat = 0;
+						float secondFloat = 0;
+						int firstInt = 0;
+						int secondInt = 0;
+						int resultInt = 0;
+						float resultFloat = 0;
+						if(first.contains(".")) {
+							firstFloat = Float.parseFloat(first);
+						}
+						else {
+							firstInt = Integer.parseInt(first);
+						}
+						if(second.contains(".")) {
+							secondFloat = Float.parseFloat(second);
+
+						}
+						else {
+							secondInt = Integer.parseInt(second);
+						}
+						if(firstInt != 0 && secondInt != 0) {
+							resultInt = firstInt * secondInt;
+						}
+						if(firstFloat != 0 && secondFloat != 0) {
+							resultFloat = firstFloat * secondFloat;
+						}
+						if(firstInt != 0 && secondFloat != 0) {
+							resultFloat = firstInt * secondFloat;
+						}
+						if(firstFloat != 0 && secondInt != 0) {
+							resultFloat = firstFloat * secondInt;
+						}
+						if(resultFloat != 0) {
+							String result = String.valueOf(resultFloat);
+							mainLabel.setText(result);
+						}
+						if(resultInt != 0) {
+							String result = String.valueOf(resultInt);
+							mainLabel.setText(result);
+						}
+					}
+					cnt = 0;
+					neg = 0;
+					cntB = 0;
+					cntP = 0;
 				}
 				if(mainLabel.getText().contains("÷")) {
 					if(mainLabel.getText().substring(mainLabel.getText().indexOf("÷") + 1, mainLabel.getText().length()).length() == 0) {
 						mainLabel.setText(mainLabel.getText().substring(0, mainLabel.getText().length() - 1));
-						cnt = 0;
-						neg = 0;
-						cntB = 0;
-						cntP = 0;
 					}
+					else {
+						String first = mainLabel.getText().substring(0, mainLabel.getText().indexOf("÷"));
+						String second = mainLabel.getText().substring(mainLabel.getText().indexOf("÷") + 1, mainLabel.getText().length());
+						if(second.startsWith(" ")) {
+							second = second.substring(1, second.length());
+						}
+						float firstFloat = 0;
+						float secondFloat = 0;
+						int firstInt = 0;
+						int secondInt = 0;
+						int resultInt = 0;
+						float resultFloat = 0;
+						if(first.contains(".")) {
+							firstFloat = Float.parseFloat(first);
+						}
+						else {
+							firstInt = Integer.parseInt(first);
+						}
+						if(second.contains(".")) {
+							secondFloat = Float.parseFloat(second);
+
+						}
+						else {
+							secondInt = Integer.parseInt(second);
+						}
+						if(firstInt != 0 && secondInt != 0) {
+							if((firstInt % secondInt) == 0) {
+								resultInt = firstInt / secondInt;
+							}
+							else {
+								resultFloat = (float) firstInt / (float) secondInt;
+							}
+						}
+						if(firstFloat != 0 && secondFloat != 0) {
+							resultFloat = firstFloat / secondFloat;
+						}
+						if(firstInt != 0 && secondFloat != 0) {
+							resultFloat = firstInt / secondFloat;
+						}
+						if(firstFloat != 0 && secondInt != 0) {
+							resultFloat = firstFloat / secondInt;
+						}
+						if(resultFloat != 0) {
+							String result = String.valueOf(resultFloat);
+							mainLabel.setText(result);
+						}
+						if(resultInt != 0) {
+							String result = String.valueOf(resultInt);
+							mainLabel.setText(result);
+						}
+					}
+					cnt = 0;
+					neg = 0;
+					cntB = 0;
+					cntP = 0;
 				}
-					
-					// Wenn nach dem Zeichen keine Zahl ist, einfach wieder erste Zahl ausgeben
-				
-				
-					// Substring vor und nach dem Zeichen
-					// Schau ob KommaZahl, wenn nicht:
-					// 	Zahl von String zu int
-					// 		### String myString = "1234";
-					// 		### int foo = Integer.parseInt(myString);
-					// 	Wenn Zahl mit Komma: 
-					// 		### String strAmount="100.20";
-					// 		### float amount=Float.parseFloat(strAmount)
-					// Wenn Index 0 beider substrings jeweils ein Minus ist, Zahl negieren
-					// Rechnen
-					// Ergebnis ausgeben
 			}
 		});
 	}
